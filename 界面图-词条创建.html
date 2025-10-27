@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百科系统 - 词条创建界面图</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Microsoft YaHei', sans-serif; background: #f5f5f5; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .header { background: #fff; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .form-container { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .form-title { font-size: 1.5rem; color: #1890ff; margin-bottom: 20px; border-left: 4px solid #1890ff; padding-left: 15px; }
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; margin-bottom: 8px; font-weight: bold; color: #333; }
+        .form-input, .form-select, .form-textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; }
+        .form-textarea { min-height: 120px; resize: vertical; }
+        .form-textarea-large { min-height: 300px; }
+        .form-hint { font-size: 0.8rem; color: #999; margin-top: 5px; }
+        .form-actions { display: flex; gap: 10px; margin-top: 30px; }
+        .btn { display: inline-block; padding: 10px 20px; background: #1890ff; color: white; text-decoration: none; border-radius: 4px; border: none; cursor: pointer; }
+        .btn-outline { background: transparent; border: 1px solid #1890ff; color: #1890ff; }
+        .btn-secondary { background: #52c41a; }
+        .btn-danger { background: #f5222d; }
+        .tag-input { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .tag { display: inline-flex; align-items: center; padding: 4px 8px; background: #f0f2f5; border-radius: 4px; font-size: 0.8rem; }
+        .tag-remove { margin-left: 5px; cursor: pointer; color: #999; }
+        .tag-input input { flex: 1; min-width: 100px; }
+        .preview-section { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 20px; }
+        .preview-title { font-size: 1.2rem; margin-bottom: 10px; color: #333; }
+        .nav { display: flex; gap: 20px; margin-bottom: 20px; }
+        .nav a { color: #1890ff; text-decoration: none; }
+        .form-row { display: flex; gap: 20px; }
+        .form-row .form-group { flex: 1; }
+        .editor-toolbar { background: #f8f9fa; padding: 10px; border-bottom: 1px solid #ddd; display: flex; gap: 10px; }
+        .editor-toolbar button { padding: 5px 10px; border: 1px solid #ddd; background: white; border-radius: 3px; cursor: pointer; }
+        .editor-container { border: 1px solid #ddd; border-radius: 4px; }
+        .editor-content { padding: 15px; min-height: 200px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>百科系统界面图 - 词条创建</h1>
+            <div class="nav">
+                <a href="界面图-首页.html">首页</a>
+                <a href="界面图-词条列表.html">词条列表</a>
+                <a href="界面图-词条详情.html">词条详情</a>
+                <a href="界面图-词条创建.html">创建词条</a>
+                <a href="界面图-搜索.html">搜索</a>
+                <a href="界面图-登录注册.html">登录/注册</a>
+                <a href="界面图-个人资料.html">个人资料</a>
+            </div>
+        </div>
+
+        <!-- 词条创建表单 -->
+        <div class="form-container">
+            <h2 class="form-title">创建新词条</h2>
+            
+            <form>
+                <!-- 基本信息 -->
+                <div class="form-group">
+                    <label class="form-label" for="entry-title">词条标题 *</label>
+                    <input type="text" id="entry-title" class="form-input" placeholder="请输入词条标题" value="Python编程语言">
+                    <div class="form-hint">标题应简洁明了，准确描述词条内容</div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="entry-category">分类 *</label>
+                        <select id="entry-category" class="form-select">
+                            <option value="">请选择分类</option>
+                            <option value="programming" selected>编程技术</option>
+                            <option value="science">自然科学</option>
+                            <option value="history">历史文化</option>
+                            <option value="art">艺术文学</option>
+                            <option value="technology">科学技术</option>
+                            <option value="life">生活百科</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="entry-language">语言</label>
+                        <select id="entry-language" class="form-select">
+                            <option value="zh-CN" selected>中文</option>
+                            <option value="en">English</option>
+                            <option value="ja">日本語</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 概述 -->
+                <div class="form-group">
+                    <label class="form-label" for="entry-summary">概述 *</label>
+                    <textarea id="entry-summary" class="form-textarea" placeholder="请输入词条概述">Python是一种高级编程语言，由Guido van Rossum于1991年创建。它以简洁的语法和强大的功能而闻名，支持多种编程范式。</textarea>
+                    <div class="form-hint">概述应简洁明了，概括词条的核心内容</div>
+                </div>
+
+                <!-- 详细内容 -->
+                <div class="form-group">
+                    <label class="form-label" for="entry-content">详细内容 *</label>
+                    <div class="editor-container">
+                        <div class="editor-toolbar">
+                            <button type="button"><strong>B</strong></button>
+                            <button type="button"><em>I</em></button>
+                            <button type="button"><u>U</u></button>
+                            <button type="button">H1</button>
+                            <button type="button">H2</button>
+                            <button type="button">H3</button>
+                            <button type="button">📋 列表</button>
+                            <button type="button">🔗 链接</button>
+                            <button type="button">🖼️ 图片</button>
+                            <button type="button">📊 表格</button>
+                            <button type="button">💻 代码</button>
+                        </div>
+                        <div class="editor-content" contenteditable="true">
+                            <h3>特性</h3>
+                            <ul>
+                                <li><strong>简洁易读</strong>：Python的语法设计强调代码的可读性</li>
+                                <li><strong>跨平台</strong>：可以在多个操作系统上运行</li>
+                                <li><strong>丰富的库</strong>：拥有庞大的标准库和第三方库生态系统</li>
+                            </ul>
+                            
+                            <h3>应用领域</h3>
+                            <p>Python在各个领域都有广泛应用：</p>
+                            <ul>
+                                <li><strong>Web开发</strong>：Django、Flask等框架</li>
+                                <li><strong>数据科学</strong>：NumPy、Pandas等库</li>
+                                <li><strong>人工智能</strong>：TensorFlow、PyTorch等框架</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-hint">支持Markdown语法，可以插入图片、代码块等丰富内容</div>
+                </div>
+
+                <!-- 标签 -->
+                <div class="form-group">
+                    <label class="form-label">标签</label>
+                    <div class="tag-input">
+                        <span class="tag">编程语言 <span class="tag-remove">×</span></span>
+                        <span class="tag">Python <span class="tag-remove">×</span></span>
+                        <span class="tag">软件开发 <span class="tag-remove">×</span></span>
+                        <input type="text" placeholder="输入标签后按回车添加">
+                    </div>
+                    <div class="form-hint">添加相关标签，帮助其他用户更好地发现词条</div>
+                </div>
+
+                <!-- 参考资料 -->
+                <div class="form-group">
+                    <label class="form-label" for="entry-references">参考资料</label>
+                    <textarea id="entry-references" class="form-textarea" placeholder="请输入参考资料链接或说明">1. Python官方文档: https://docs.python.org/
+2. Python维基百科: https://en.wikipedia.org/wiki/Python_(programming_language)</textarea>
+                    <div class="form-hint">请提供可靠的参考资料来源，确保词条内容的准确性</div>
+                </div>
+
+                <!-- 预览区域 -->
+                <div class="preview-section">
+                    <h3 class="preview-title">预览</h3>
+                    <div style="background: white; padding: 15px; border-radius: 4px; border: 1px solid #eee;">
+                        <h4 style="color: #1890ff; margin-bottom: 10px;">Python编程语言</h4>
+                        <p style="color: #666; margin-bottom: 10px;">Python是一种高级编程语言，由Guido van Rossum于1991年创建。它以简洁的语法和强大的功能而闻名，支持多种编程范式。</p>
+                        <div style="display: flex; gap: 15px; font-size: 0.8rem; color: #999;">
+                            <span>分类: 编程技术</span>
+                            <span>标签: 编程语言, Python, 软件开发</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 表单操作 -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-secondary">📝 保存草稿</button>
+                    <button type="submit" class="btn">✅ 发布词条</button>
+                    <button type="button" class="btn btn-outline">🗑️ 取消</button>
+                    <button type="button" class="btn btn-outline">👁️ 预览</button>
+                </div>
+            </form>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; color: #666; font-size: 14px;">
+            <p>此页面为界面示意图，展示词条创建页面的布局和功能模块</p>
+            <p>实际功能包括：富文本编辑器、标签管理、内容预览、草稿保存等</p>
+        </div>
+    </div>
+</body>
+</html>
